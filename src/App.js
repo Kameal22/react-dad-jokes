@@ -1,10 +1,12 @@
-import './App.css';
+import './Styles/App.css';
 import {Component} from 'react'
+import DadJokes from './Jokes/DadJokes';
 
 class App extends Component{
   render(){
     return(
-      <div>
+      <div className = "mainDiv">
+        <DadJokes />
       </div>
     )
   }

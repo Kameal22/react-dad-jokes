@@ -1,0 +1,29 @@
+
+html,
+body {
+  height: 100%;
+  overflow-y: hidden;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* background-color: lightskyblue; */
+  /* background: linear-gradient(90deg, #FFC0CB 50%, #00FFFF 50%); */
+  background: linear-gradient(140deg, lightskyblue 50%, #cf5f72 50%);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  width: 65%;
+  height: 80%;
+  margin: 14vh auto;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
