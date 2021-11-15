@@ -1,3 +1,25 @@
-.singleJokeDiv {
+.wholeJokeDiv {
   border-bottom: 1px solid purple;
+  display: flex;
+  max-height: 6vh;
+}
+
+.voteDiv {
+  min-width: 12%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.voteScore {
+  border-radius: 100%;
+  width: 3em;
+  height: 3em;
+  border: 1px solid green;
+}
+
+.jokeDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
