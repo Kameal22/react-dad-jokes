@@ -1,7 +1,9 @@
 .wholeJokeDiv {
   border-bottom: 1px solid purple;
   display: flex;
-  max-height: 6vh;
+  min-height: 10vh;
+  max-height: 12vh;
+  font-size: .8em;
 }
 
 .voteDiv {
@@ -9,17 +11,41 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-right: 1em;
+  margin-left: .5em;
+}
+
+.voteDiv svg{
+  color: rgb(83, 83, 83);
+  cursor: pointer;
 }
 
 .voteScore {
   border-radius: 100%;
-  width: 3em;
-  height: 3em;
-  border: 1px solid green;
+  width: 2.8em;
+  height: 2.8em;
+  border: 2px solid red;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.voteScore p{
+  font-size: 1.4em;
 }
 
 .jokeDiv {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex: 1;
+}
+
+.emojiDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  justify-self: flex-end;
+  font-size: 2.5em;
+  min-width: 12%;
 }

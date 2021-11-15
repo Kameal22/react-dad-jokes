@@ -11,7 +11,8 @@ class DadJokes extends Component{
   constructor(props){
     super(props)
     this.state = {
-        dadJokes : []
+        dadJokes : [
+        ]
     }
 }
 
@@ -28,9 +29,9 @@ fetchJoke = () =>{
         .then(response =>{
           let joke = response.data.joke
 
-          this.setState({
-            dadJokes: [...this.state.dadJokes, joke]
-          })
+          this.setState(prevState => ({
+            dadJokes: [...prevState.dadJokes, {joke : joke, score : 0}]
+          }))
         })
         .catch(error =>{
           console.log(error)  
