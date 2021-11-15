@@ -1,8 +1,8 @@
-.jokesListDiv{
-    flex: 3;
-    height: 85%;
-    background-color: whitesmoke;
-    align-self: center;
-    box-shadow: -2px 8px 24px -9px rgba(66, 68, 90, 1);
-    overflow-y: scroll;
+.jokesListDiv {
+  flex: 3;
+  height: 85%;
+  background-color: whitesmoke;
+  align-self: center;
+  box-shadow: -2px 8px 24px -9px rgba(66, 68, 90, 1);
+  overflow: auto;
 }
