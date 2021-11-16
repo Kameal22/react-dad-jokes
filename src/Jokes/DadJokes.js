@@ -4,6 +4,8 @@ import JokesList from './JokesList';
 import ImportJokes from './ImportJokes';
 import axios from 'axios'
 
+import { v4 as uuidv4 } from 'uuid';
+
 const JOKES_API = 'https://icanhazdadjoke.com/'
 
 class DadJokes extends Component{
@@ -30,7 +32,7 @@ fetchJoke = () =>{
           let joke = response.data.joke
 
           this.setState(prevState => ({
-            dadJokes: [...prevState.dadJokes, {joke : joke, score : 0}]
+            dadJokes: [...prevState.dadJokes, {joke : joke, score : 0, voteLimit : false, id : uuidv4()}]
           }))
         })
         .catch(error =>{
@@ -46,12 +48,30 @@ fetchTenJokes = () =>{
     }
 }
 
+sortJokesByScore = () =>{
+  this.state.dadJokes.sort((a,b) => b.score - a.score)
+}
+
+voteJoke = (id, isAdding) =>{
+  const votedJokes = this.state.dadJokes.map(joke =>{
+    if(joke.id === id){
+      return {...joke, score : isAdding ? joke.score + 1 : joke.score - 1}
+    }
+    return joke
+  })
+
+  this.setState({
+    dadJokes : votedJokes
+  })
+}
+
   render(){
+    this.sortJokesByScore()
     const {dadJokes} = this.state
     return(
       <div className = "dadJokesDiv">
         <ImportJokes importJoke = {this.fetchJoke} importJokes = {this.fetchTenJokes} />
-        <JokesList jokes = {dadJokes} />
+        <JokesList jokes = {dadJokes} vote = {this.voteJoke} />
       </div>
     )
   }

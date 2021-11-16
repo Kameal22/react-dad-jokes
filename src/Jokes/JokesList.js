@@ -12,7 +12,13 @@ class JokesList extends Component{
       <div className = "jokesListDiv">
 
         {this.props.jokes.map(joke =>{
-          return <Joke joke = {joke.joke} score = {joke.score} />
+          return <Joke
+          joke = {joke.joke}
+          score = {joke.score}
+          id = {joke.id} 
+          key = {joke.id} 
+          vote = {this.props.vote}
+          limit = {joke.voteLimit} />
         })}
 
       </div>
