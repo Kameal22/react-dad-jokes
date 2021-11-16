@@ -13,12 +13,16 @@ class Joke extends Component{
 
   setScoreStyle = () =>{
     let finalColor = {borderColor : ''}
-    if(this.props.score > 2){
+    if(this.props.score < 3){
+      finalColor.borderColor = 'red'
+    }else if(this.props.score < 7){
       finalColor.borderColor = 'orange'
-    }else if(this.props.score > 5){
+    }else if(this.props.score < 11){
       finalColor.borderColor = 'yellow'
+    }else if (this.props.score < 15){
+      finalColor.borderColor = 'green'
     }
-    return finalColor
+    return finalColor;
   }
 
   render(){
