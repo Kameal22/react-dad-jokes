@@ -11,7 +11,18 @@ class Joke extends Component{
     this.props.vote(this.props.id, false)
   }
 
+  setScoreStyle = () =>{
+    let finalColor = {borderColor : ''}
+    if(this.props.score > 2){
+      finalColor.borderColor = 'orange'
+    }else if(this.props.score > 5){
+      finalColor.borderColor = 'yellow'
+    }
+    return finalColor
+  }
+
   render(){
+
     return(
       <div className = 'wholeJokeDiv'>
 
@@ -20,7 +31,7 @@ class Joke extends Component{
           <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
           </svg>
 
-          <div className = 'voteScore'>
+          <div className = 'voteScore' style = {this.setScoreStyle()}>
             <p>{this.props.score}</p>
           </div>
 
