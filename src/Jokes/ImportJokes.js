@@ -4,7 +4,6 @@ import {Component} from 'react'
 class ImportJokes extends Component{
 
     handleClick = () =>{
-      this.props.importJoke()
       this.props.importJokes()
     }
 

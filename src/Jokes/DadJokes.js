@@ -23,7 +23,7 @@ class DadJokes extends Component{
 }
 
 componentDidMount(){
-    this.fetchTenJokes()
+    this.fetchJokes()
 }
 
 fetchJoke = () =>{
@@ -52,13 +52,20 @@ fetchTenJokes = () =>{
     }
 }
 
-fetchJokes = () =>{
+fetchJokes = async () =>{
   let jokes = [];
 
   while(jokes.length < this.props.jokesLimit){
-    
+    await axios.get(JOKES_API, {
+      headers: {
+        Accept : 'application/json'
+      }
+    }).then(response => response.data)
+      .then(joke => jokes.push(joke))
   }
   console.log(jokes)
+  
+  this.setState({dadJokes: [...this.state.dadJokes, ...jokes]})
 }
 
 sortJokesByScore = () =>{
