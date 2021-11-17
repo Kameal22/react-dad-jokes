@@ -10,6 +10,10 @@ const JOKES_API = 'https://icanhazdadjoke.com/'
 
 class DadJokes extends Component{
 
+  static defaultProps = {
+    jokesLimit : 10
+  }
+
   constructor(props){
     super(props)
     this.state = {
@@ -23,21 +27,21 @@ componentDidMount(){
 }
 
 fetchJoke = () =>{
-        axios.get(JOKES_API, {
-            headers : {
-                Accept: 'application/json'
-            }
-        })
-        .then(response =>{
-          let joke = response.data.joke
+  axios.get(JOKES_API, {
+      headers : {
+          Accept: 'application/json'
+      }
+  })
+  .then(response =>{
+    let joke = response.data.joke
 
-          this.setState(prevState => ({
-            dadJokes: [...prevState.dadJokes, {joke : joke, score : 0, voteLimit : false, id : uuidv4()}]
-          }))
-        })
-        .catch(error =>{
-          console.log(error)  
-        })
+    this.setState(prevState => ({
+      dadJokes: [...prevState.dadJokes, {joke : joke, score : 0, voteLimit : false, id : uuidv4()}]
+    }))
+  })
+  .catch(error =>{
+    console.log(error)  
+  })
 }
 
 fetchTenJokes = () =>{
@@ -46,6 +50,15 @@ fetchTenJokes = () =>{
     for(let i = 0; i < jokesLimit; i ++){
         this.fetchJoke()
     }
+}
+
+fetchJokes = () =>{
+  let jokes = [];
+
+  while(jokes.length < this.props.jokesLimit){
+    
+  }
+  console.log(jokes)
 }
 
 sortJokesByScore = () =>{
