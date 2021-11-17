@@ -4,11 +4,15 @@ import {Component} from 'react'
 class Joke extends Component{
 
   handleUpVote = () =>{
+    if(this.props.score < 15){
     this.props.vote(this.props.id, true)
+    }
   }
 
   handleDownVote = () =>{
+    if(this.props.score > -15){
     this.props.vote(this.props.id, false)
+    }
   }
 
   setScoreStyle = () =>{
@@ -20,6 +24,8 @@ class Joke extends Component{
     }else if(this.props.score < 11){
       finalColor.borderColor = 'yellow'
     }else if (this.props.score < 15){
+      finalColor.borderColor = 'green'
+    }else{
       finalColor.borderColor = 'green'
     }
     return finalColor;
