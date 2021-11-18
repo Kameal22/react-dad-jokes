@@ -4,8 +4,6 @@ import JokesList from './JokesList';
 import ImportJokes from './ImportJokes';
 import axios from 'axios'
 
-import { v4 as uuidv4 } from 'uuid';
-
 const JOKES_API = 'https://icanhazdadjoke.com/'
 
 class DadJokes extends Component{
@@ -26,44 +24,21 @@ componentDidMount(){
     this.fetchJokes()
 }
 
-fetchJoke = () =>{
-  axios.get(JOKES_API, {
-      headers : {
-          Accept: 'application/json'
-      }
-  })
-  .then(response =>{
-    let joke = response.data.joke
-
-    this.setState(prevState => ({
-      dadJokes: [...prevState.dadJokes, {joke : joke, score : 0, voteLimit : false, id : uuidv4()}]
-    }))
-  })
-  .catch(error =>{
-    console.log(error)  
-  })
-}
-
-fetchTenJokes = () =>{
-    const jokesLimit = 10
-
-    for(let i = 0; i < jokesLimit; i ++){
-        this.fetchJoke()
-    }
-}
-
 fetchJokes = async () =>{
-  let jokes = [];
+  const jokes = [];
 
   while(jokes.length < this.props.jokesLimit){
-    await axios.get(JOKES_API, {
+    let joke = await axios.get(JOKES_API, {
       headers: {
         Accept : 'application/json'
       }
-    }).then(response => response.data)
-      .then(joke => jokes.push(joke))
+    }).then(response => response.data);
+
+      if(!this.state.dadJokes.some(tmpJokes => tmpJokes.id === joke.id)) {
+      joke.score = 0;
+      jokes.push(joke)
+      }
   }
-  console.log(jokes)
   
   this.setState({dadJokes: [...this.state.dadJokes, ...jokes]})
 }
@@ -90,7 +65,7 @@ voteJoke = (id, isAdding) =>{
     const {dadJokes} = this.state
     return(
       <div className = "dadJokesDiv">
-        <ImportJokes importJoke = {this.fetchJoke} importJokes = {this.fetchTenJokes} />
+        <ImportJokes importJokes = {this.fetchJokes} />
         <JokesList jokes = {dadJokes} vote = {this.voteJoke} />
       </div>
     )
