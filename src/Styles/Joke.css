@@ -49,3 +49,7 @@
   font-size: 2.5em;
   min-width: 12%;
 }
+
+.emojiDiv svg {
+  color: black;
+}

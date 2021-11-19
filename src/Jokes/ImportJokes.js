@@ -1,23 +1,23 @@
-import '../Styles/ImportJokes.css';
-import {Component} from 'react'
+import "../Styles/ImportJokes.css";
+import { Component } from "react";
 
-class ImportJokes extends Component{
+class ImportJokes extends Component {
+  handleClick = () => {
+    this.props.importJokes();
+  };
 
-    handleClick = () =>{
-      this.props.importJokes()
-    }
+  render() {
+    return (
+      <div className="importJokesDiv">
+        <h2 className="heading">Dad jokes</h2>
 
-  render(){
-    return(
-      <div className = "importJokesDiv">
+        <p className="laughEmoji">&#128514;</p>
 
-        <h2 className = "heading">Dad jokes</h2>
-
-        <p className = "laughEmoji">&#128514;</p>
-
-        <button className = "fetchJokesBtn" onClick = {this.handleClick}>New jokes!</button>
+        <button className="fetchJokesBtn" onClick={this.handleClick}>
+          New jokes!
+        </button>
       </div>
-    )
+    );
   }
 }
 

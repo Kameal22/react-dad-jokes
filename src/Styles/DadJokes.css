@@ -1,5 +1,11 @@
-.dadJokesDiv{
-    width: 100%;
-    height: 100%;
-    display: flex;
+.dadJokesDiv {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.loading {
+  text-align: center;
+  color: white;
+  font-size: 3em;
 }
